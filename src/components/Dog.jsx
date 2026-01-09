@@ -76,7 +76,7 @@ function Dog() {
       />
 
       {/* Mouse controls: rotate / zoom the model */}
-      {/* <OrbitControls /> */}
+      <OrbitControls />
 
       {/* Light that softly lights everything */}
       <ambientLight intensity={0.6} />
