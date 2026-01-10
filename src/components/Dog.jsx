@@ -2,8 +2,14 @@ import { OrbitControls, useGLTF, useTexture,useAnimations } from '@react-three/d
 import { useThree } from '@react-three/fiber'
 import { useEffect } from 'react'
 import * as THREE from 'three'
+import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 function Dog() {
+  //! PLUGIN
+  gsap.registerPlugin(useGSAP) 
+  gsap.registerPlugin(ScrollTrigger) 
   // Load the 3D model (this already contains geometry + materials)
   const model = useGLTF('/models/dog.drc.glb')
   const{actions}=useAnimations(model.animations,model.scene)
@@ -14,7 +20,6 @@ function Dog() {
 
   const [normalMap,
     sampleMatCap,
-    
   ]=(useTexture(["/dog_normals.jpg","/matcap/mat-2.png","/branches_diffuse.jpeg","/branches_normals.jpeg"])).map((texture=>{
     texture.flipY=false
     texture.colorSpace=THREE.SRGBColorSpace
@@ -39,14 +44,12 @@ function Dog() {
   
   const dogMetarial=new THREE.MeshMatcapMaterial({
         normalMap:normalMap,
-        
         matcap:sampleMatCap
       })
 
   const branchMatarial=new THREE.MeshMatcapMaterial({
     normalMap:branchNormalMap,
-        
-        map:branchMap
+    map:branchMap
   })
   // Go through every object inside the 3D model
   model.scene.traverse((child) => {
@@ -65,6 +68,16 @@ function Dog() {
     }
   })
 
+  // GSAP ANIMATION 
+  useGSAP(()=>{
+    const tl=gsap.timeline({
+      scrollTrigger:{
+        trigger:"#section-1",
+        endTrigger:"#section-3",
+        start:"top top"
+      }
+    })
+  },[])
   return (
     <>
       {/* Render the 3D model in the scene */}
@@ -76,7 +89,7 @@ function Dog() {
       />
 
       {/* Mouse controls: rotate / zoom the model */}
-      <OrbitControls />
+      {/* <OrbitControls /> */}
 
       {/* Light that softly lights everything */}
       <ambientLight intensity={0.6} />
