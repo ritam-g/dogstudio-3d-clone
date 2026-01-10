@@ -1,6 +1,6 @@
 import { OrbitControls, useGLTF, useTexture,useAnimations } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -68,15 +68,38 @@ function Dog() {
     }
   })
 
+  const DogModel=useRef(model)
+  
+  
   // GSAP ANIMATION 
   useGSAP(()=>{
     const tl=gsap.timeline({
       scrollTrigger:{
         trigger:"#section-1",
         endTrigger:"#section-3",
-        start:"top top"
+        start:"top top",
+        end:"bottom bottom",
+        markers:true,
+        scrub:true
+        
       }
     })
+    tl
+    .to(DogModel.current.scene.position,{
+      z:"-=0.9",
+      y:"+=0.25"
+    }) 
+    .to(DogModel.current.scene.rotation,{
+      x: `+=${Math.PI/18}`
+    })
+    .to(DogModel.current.scene.rotation,{
+      y:`-=${Math.PI}`,
+    },"third")
+    .to(DogModel.current.scene.position,{
+      x:"-=0.8",
+      z:"+=0.4",
+      y:"+=0.1"
+    },"third")
   },[])
   return (
     <>

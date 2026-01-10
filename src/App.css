@@ -1,22 +1,17 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body,#root{
-  height: 100%;
-  width: 100%;
-  background-color:rgb(54, 51, 51);
-}
+@import "tailwindcss";
 main{
   position: relative;
 }
 /* canvas{
 } */
+ html{
+  overflow-x: hidden;
+ }
 section{
+
   min-height: 100vh;
   width: 100%;
+  overflow-x: hidden;
   border: 1px solid white;
   position: relative;
   z-index: 2;
