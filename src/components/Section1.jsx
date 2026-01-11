@@ -1,5 +1,6 @@
 import React from 'react'
 import Nav from './Nav'
+import Middle from './Middle'
 
 function Section1() {
   return (
@@ -7,8 +8,12 @@ function Section1() {
       <section className='
       w-full overflow-x-hidden
       lg:p-8
-      ' id='section-1'>
+      ' 
+      id='section-1
+      '
+      >
         <Nav/>
+        <Middle/>
       </section>
     </>
   )

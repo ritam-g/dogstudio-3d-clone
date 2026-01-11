@@ -7,12 +7,74 @@ main{
  html{
   overflow-x: hidden;
  }
-section{
+ #canvas-ele::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(135, 16, 16, 0.5); */
+  z-index: -1;
+  background-image:url(/background-l.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: all 0.5s ease-in-out;
+ }
+ main:has(.section-3 .second-span:hover) #canvas-ele::after{
+  opacity: 0;
 
+ }
+section{
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
   border: 1px solid white;
   position: relative;
   z-index: 2;
+}
+.images{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.5s ease-in-out ;
+  }
+}
+main:has(.section-3 .title[data-img-title="tomorrowland"]:hover) .images img#img-tomorrowland{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+} 
+main:has(.section-3 .title[data-img-title="phone"]:hover) .images img#img-phone{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+} 
+main:has(.section-3 .title[data-img-title="opera"]:hover) .images img#img-opera{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+main:has(.section-3 .title[data-img-title="navy-pier"]:hover) .images img#img-navy-pier{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+main:has(.section-3 .title[data-img-title="msi-chicago"]:hover) .images img#img-msi-chicago{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+main:has(.section-3 .title[data-img-title="kikk"]:hover) .images img#img-kikk{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+main:has(.section-3 .title[data-img-title="kennedy"]:hover) .images img#img-kennedy{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }

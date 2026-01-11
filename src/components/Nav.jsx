@@ -3,7 +3,7 @@ import React from 'react'
 function Nav() {
   return (
     <div className='parentNav flex items-center justify-between w-full overflow-x-hidden
-    lg: h-[7rem] text-2xl p-3 text-white
+    lg: h-[3rem] text-[1rem] p-3 text-white overflow-y-hidden
     '>
       <div className=" nav-ele-svg  w-[18vh]
       
@@ -31,7 +31,7 @@ function Nav() {
         <h1>Our Showreel</h1>
       </div>
       <div className=" nav-ele3">
-        <i className="ri-menu-3-fill"></i>
+        <i className="ri-menu-3-fill text-2xl"></i>
       </div>
     </div>
   )

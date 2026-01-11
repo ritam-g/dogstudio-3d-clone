@@ -34,7 +34,7 @@ function Dog() {
 
   // Access the camera from the Three.js scene
   useThree(({camera,scene,gl})=>{
-    camera.position.z = 1
+    camera.position.z = 0.7
     gl.toneMapping = THREE.ReinhardToneMapping
     gl.outputColorSpace=THREE.SRGBColorSpace
 
@@ -76,7 +76,7 @@ function Dog() {
     const tl=gsap.timeline({
       scrollTrigger:{
         trigger:"#section-1",
-        endTrigger:"#section-3",
+        endTrigger:"#section-5",
         start:"top top",
         end:"bottom bottom",
         markers:true,
@@ -90,16 +90,22 @@ function Dog() {
       y:"+=0.25"
     }) 
     .to(DogModel.current.scene.rotation,{
-      x: `+=${Math.PI/18}`
+      x: `+=${Math.PI/18}`,
+      
     })
     .to(DogModel.current.scene.rotation,{
+      x: `+=${Math.PI/18}`,
+      
+    })
+
+    .to(DogModel.current.scene.rotation,{
       y:`-=${Math.PI}`,
-    },"third")
+    },"four")
     .to(DogModel.current.scene.position,{
       x:"-=0.8",
       z:"+=0.4",
       y:"+=0.1"
-    },"third")
+    },"four")
   },[])
   return (
     <>
@@ -107,8 +113,8 @@ function Dog() {
       <primitive
         object={model.scene}
         scale={2}                      // Resize the model
-        position={[0.5, -1.2, 0]}      // Move the model in the scene
-        rotation={[0, Math.PI / 4, 0]} // Rotate the model
+        position={[0.4, -1.2, 0]}      // Move the model in the scene
+        rotation={[0, Math.PI / 6, 0]} // Rotate the model
       />
 
       {/* Mouse controls: rotate / zoom the model */}
