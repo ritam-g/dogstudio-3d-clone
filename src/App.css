@@ -61,6 +61,7 @@ main:has(.section-3 .title[data-img-title="phone"]:hover) .images img#img-phone{
 main:has(.section-3 .title[data-img-title="opera"]:hover) .images img#img-opera{
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+  background-color: rgba(172, 5, 5, 0.898);
 }
 main:has(.section-3 .title[data-img-title="navy-pier"]:hover) .images img#img-navy-pier{
   opacity: 1;
@@ -73,6 +74,7 @@ main:has(.section-3 .title[data-img-title="msi-chicago"]:hover) .images img#img-
 main:has(.section-3 .title[data-img-title="kikk"]:hover) .images img#img-kikk{
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
+  background-color: rgba(14, 14, 193, 0.681);
 }
 main:has(.section-3 .title[data-img-title="kennedy"]:hover) .images img#img-kennedy{
   opacity: 1;
