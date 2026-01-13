@@ -1,13 +1,54 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
 
 function Nav() {
+  const navRef = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".nav-logo", {
+        x: -80,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+      })
+
+      gsap.from(".nav-showreel", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.3,
+        ease: "power3.out"
+      })
+
+      gsap.from(".nav-menu", {
+        x: 80,
+        opacity: 0,
+        duration: 1,
+        delay: 0.4,
+        ease: "power3.out"
+      })
+    }, navRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <div className='parentNav flex items-center justify-between w-full overflow-x-hidden
-    lg: h-[3rem] text-[1rem] p-3 text-white overflow-y-hidden
-    '>
-      <div className=" nav-ele-svg  w-[18vh]
-      
-      ">
+    <div
+      ref={navRef}
+      className="
+        parentNav
+        flex items-center justify-between
+        w-full
+        overflow-hidden
+        h-[3rem]
+        text-[1rem]
+        p-3
+        text-white
+      "
+    >
+      {/* Logo */}
+      <div className="nav-logo w-[18vh] ">
         <svg xmlns="http://www.w3.org/2000/svg" fill='white' viewBox="0 0 401.23099 116.838">
         <path d="M97.9212,84.4793c0-13.21301-7.2132-23.3924-25.54961-23.3924h-19.6172v46.7851h19.6172c18.3364,0,25.54961-10.1797,25.54961-23.3927Zm-13.3478,0c0,9.2356-5.1908,12.6737-12.404,12.6737h-6.6739v-25.3474h6.6739c7.2132,0,12.404,3.4381,12.404,12.6737Z"></path>
         <path d="M100.972,107.872h37.078v-10.6516h-24.33701v-8.0222h21.37v-10.112h-21.37v-7.348h23.73v-10.6513h-36.47099v46.7851Z"></path>
@@ -26,11 +67,15 @@ function Nav() {
         <path d="M30.4351,61.1758h-10.4155L0,116.838H10.3479L30.4351,61.1758Z"></path>
       </svg>
       </div>
-      <div className=" nav-ele2 flex gap-2">
+
+      {/* Showreel */}
+      <div className="nav-showreel flex gap-2 items-center cursor-pointer">
         <i className="ri-arrow-right-s-line text-red-500"></i>
-        <h1>Our Showreel</h1>
+        <h1 className="uppercase tracking-wide">Our Showreel</h1>
       </div>
-      <div className=" nav-ele3">
+
+      {/* Menu */}
+      <div className="nav-menu cursor-pointer">
         <i className="ri-menu-3-fill text-2xl"></i>
       </div>
     </div>

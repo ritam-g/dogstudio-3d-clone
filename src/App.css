@@ -79,3 +79,32 @@ main:has(.section-3 .title[data-img-title="kennedy"]:hover) .images img#img-kenn
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
+/* Scrollbar width */
+::-webkit-scrollbar {
+  width: 12px;       /* width for vertical scrollbar */
+  height: 12px;      /* height for horizontal scrollbar */
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* dark background */
+  border-radius: 10px;
+}
+
+/* Scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #9b59b6;  /* custom purple color */
+  border-radius: 10px;
+  border: 3px solid #1a1a1a; /* space around thumb */
+}
+
+/* Scrollbar thumb hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #56236ce1; /* darker purple on hover */
+}
+
+/* Firefox scrollbar support */
+* {
+  scrollbar-width: thin;                 /* thin scrollbar */
+  scrollbar-color: #7c22c5 #1a1a1a;     /* thumb track */
+}
