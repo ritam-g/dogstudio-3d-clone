@@ -149,7 +149,7 @@ function Dog() {
         endTrigger:"#section-5",
         start:"top top",
         end:"bottom bottom",
-        markers:true,
+        // markers:true,
         scrub:true
         
       }
@@ -264,6 +264,17 @@ function Dog() {
     `.title[data-img-title='opera']`
   ).addEventListener("mouseenter",()=>{
     material.current.uMatcap1.value=mat13
+    gsap.to(material.current.uProgress,{
+      value:0.0,
+      duration:0.5,
+      onComplete:()=>{
+        material.current.uMatcap2.value=material.current.uMatcap1.value
+        material.current.uProgress.value=1.5
+      }
+    })
+  })
+  document.querySelector('.section-5').addEventListener("mouseenter",()=>{
+    material.current.uMatcap1.value=mat2
     gsap.to(material.current.uProgress,{
       value:0.0,
       duration:0.5,

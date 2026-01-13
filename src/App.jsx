@@ -6,6 +6,8 @@ import { Canvas } from '@react-three/fiber'
 import Section1 from './components/Section1'
 import Section2 from './components/Section2'
 import Section3 from './components/Section3'
+import Section5 from './components/Section5'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -43,9 +45,9 @@ function App() {
     <Section1 />
     <Section2/>
     <Section3/>
-    <section id='section-5'></section>
+    <Section5/>
     
-    
+    <Footer/>
     </main>
     </>
   )

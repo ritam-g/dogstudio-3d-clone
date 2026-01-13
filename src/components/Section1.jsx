@@ -9,8 +9,7 @@ function Section1() {
       w-full overflow-x-hidden
       lg:p-8
       ' 
-      id='section-1
-      '
+      id='section-1'
       >
         <Nav/>
         <Middle/>
