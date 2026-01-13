@@ -10,9 +10,20 @@ import Section5 from './components/Section5'
 import Footer from './components/Footer'
 
 function App() {
+  function sound() {
+    const audio=new Audio('/sound/wolf.mp3')
+    audio.play().catch(err => {
+    console.log("Audio play failed:", err)
+  })
+  }
+  
   return (
     <>
-    <main className='
+    <main
+    onClick={()=>{
+      sound()
+    }}
+     className='
     w-screen  bg-black 
     lg:pt-14 text-white
     '>
