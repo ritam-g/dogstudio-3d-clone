@@ -14,7 +14,7 @@ A high-fidelity clone of the iconic DogStudio website interactive experience, bu
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [React 19](https://react.dev/)
+- **Framework**: [React 19](https://react.dev/) 
 - **3D Engine**: [Three.js](https://threejs.org/) with [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/)
 - **Animation**: [GSAP](https://greensock.com/gsap/) (ScrollTrigger, useGSAP)
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
