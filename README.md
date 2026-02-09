@@ -35,7 +35,7 @@ A high-fidelity clone of the iconic DogStudio website interactive experience, bu
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ritam-g/dogstudio-3d-clone.git
    cd React-Dog
    ```
 
