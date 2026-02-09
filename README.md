@@ -11,6 +11,10 @@ A high-fidelity clone of the iconic DogStudio website interactive experience, bu
 - **Scroll-Driven Animations**: Seamless integration of `GSAP` and `ScrollTrigger` to animate the 3D model's position, rotation, and scale as the user moves through the page.
 - **Dynamic CSS UI**: A premium, responsive interface styled with **Tailwind CSS**, featuring glassmorphism and smooth hover effects.
 - **Audio Experience**: Interactive sound effects (wolf howl) triggered on user interaction.
+- **Professional Loading States**: Animated progress indicator with smooth transitions during 3D asset loading.
+- **Mobile Optimization**: Device-based quality settings for optimal performance across all devices.
+- **Error Handling**: Graceful error boundaries to prevent crashes and provide user-friendly fallbacks.
+- **Performance Monitoring**: FPS tracking in development mode to ensure smooth 60fps experience.
 
 ## 🛠️ Tech Stack
 
@@ -50,6 +54,29 @@ A high-fidelity clone of the iconic DogStudio website interactive experience, bu
    npm run build
    ```
 
+## ⚡ Performance Features
+
+### Loading States
+- **Progress Indicator**: Real-time loading progress with animated progress bar
+- **Smooth Transitions**: Fade-in animation after 3D assets load
+- **Suspense Boundaries**: React Suspense integration for optimal UX
+
+### Mobile Optimization
+- **Device Detection**: Automatic detection of mobile devices
+- **Quality Presets**: Dynamic quality adjustment (low/high) based on device
+- **Adaptive Rendering**: Lower pixel ratio on mobile for better performance
+- **Scale Adjustment**: Optimized model scale for different screen sizes
+
+### Error Handling
+- **Error Boundaries**: Graceful handling of WebGL/3D failures
+- **User-Friendly Fallbacks**: Clear error messages with reload option
+- **Crash Prevention**: Isolated 3D errors don't break the entire app
+
+### Performance Monitoring
+- **FPS Tracking**: Real-time FPS monitoring in development mode
+- **Performance Warnings**: Console warnings when FPS drops below 30
+- **Optimized Rendering**: Canvas performance configuration for smooth 60fps
+
 ## 📂 Project Structure
 
 ```
@@ -58,9 +85,13 @@ React-Dog/
 ├── src/
 │   ├── components/      # React components
 │   │   ├── Dog.jsx      # Core 3D scene & GSAP logic
+│   │   ├── Loader.jsx   # Loading progress component
+│   │   ├── CanvasErrorBoundary.jsx  # Error handling
 │   │   ├── Nav.jsx      # Navigation component
 │   │   ├── SectionX.jsx # Content sections
 │   │   └── Footer.jsx   # Footer component
+│   ├── utils/           # Utility functions
+│   │   └── deviceDetection.js  # Device & quality detection
 │   ├── App.jsx          # Main application entry
 │   ├── main.jsx         # React mounting point
 │   └── App.css          # Global styles & Tailwind imports
