@@ -1,5 +1,4 @@
-import { useState, Suspense } from 'react'
-
+import { Suspense } from 'react'
 import './App.css'
 import Dog from './components/Dog'
 import { Canvas } from '@react-three/fiber'
@@ -11,9 +10,10 @@ import Footer from './components/Footer'
 import Loader from './components/Loader'
 import CanvasErrorBoundary from './components/CanvasErrorBoundary'
 import { getDeviceQuality } from './utils/deviceDetection'
+import { TransitionProvider } from './hooks/useTransitionStore'
+import Nav from './components/Nav'
 
 function App() {
-  // Get device-optimized quality settings
   const deviceQuality = getDeviceQuality();
 
   function sound() {
@@ -24,15 +24,11 @@ function App() {
   }
 
   return (
-    <>
+    <TransitionProvider>
       <main
-        onClick={() => {
-          sound()
-        }}
-        className='
-    w-screen  bg-black 
-    lg:pt-14 text-white
-    '>
+        onClick={() => sound()}
+        className='w-screen bg-black lg:pt-14 text-white'
+      >
         <div className="images">
           <img id="img-tomorrowland" src="/tommorowland.png" alt="Tomorrowland" />
           <img id="img-phone" src="/phone.png" alt="Phone" />
@@ -57,7 +53,6 @@ function App() {
               top: 0,
               left: 0,
               zIndex: 1,
-
             }}
           >
             <Suspense fallback={<Loader />}>
@@ -65,14 +60,14 @@ function App() {
             </Suspense>
           </Canvas>
         </CanvasErrorBoundary>
+
         <Section1 />
         <Section2 />
         <Section3 />
         <Section5 />
-
         <Footer />
       </main>
-    </>
+    </TransitionProvider>
   )
 }
 

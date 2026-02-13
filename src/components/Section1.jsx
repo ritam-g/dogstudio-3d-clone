@@ -1,20 +1,20 @@
 import React from 'react'
 import Nav from './Nav'
 import Middle from './Middle'
+import { useTransitionContext } from '../hooks/useTransitionStore'
 
 function Section1() {
+  const { setActiveTitle } = useTransitionContext()
+
   return (
-    <>
-      <section className='
-      w-full overflow-x-hidden
-      lg:p-8
-      ' 
+    <section
       id='section-1'
-      >
-        <Nav/>
-        <Middle/>
-      </section>
-    </>
+      className='w-full overflow-x-hidden lg:p-8'
+      onMouseEnter={() => setActiveTitle(null)}
+    >
+      <Nav />
+      <Middle />
+    </section>
   )
 }
 

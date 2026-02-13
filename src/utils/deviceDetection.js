@@ -17,7 +17,6 @@ export const isMobile = () => {
  */
 export const getDeviceQuality = () => {
     const mobile = isMobile();
-    const pixelRatio = window.devicePixelRatio || 1;
 
     return {
         isMobile: mobile,
