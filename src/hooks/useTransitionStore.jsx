@@ -4,9 +4,10 @@ const TransitionContext = createContext();
 
 export const TransitionProvider = ({ children }) => {
     const [activeTitle, setActiveTitle] = useState(null);
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
     return (
-        <TransitionContext.Provider value={{ activeTitle, setActiveTitle }}>
+        <TransitionContext.Provider value={{ activeTitle, setActiveTitle, mousePos, setMousePos }}>
             {children}
         </TransitionContext.Provider>
     );

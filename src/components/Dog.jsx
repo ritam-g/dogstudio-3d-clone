@@ -1,4 +1,4 @@
-import { OrbitControls, useGLTF, useTexture, useAnimations } from '@react-three/drei'
+import { useGLTF, useTexture, useAnimations } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef, useState, useMemo } from 'react'
 import * as THREE from 'three'
@@ -12,7 +12,7 @@ function Dog({ quality = 'high' }) {
   gsap.registerPlugin(useGSAP)
   gsap.registerPlugin(ScrollTrigger)
 
-  const { activeTitle } = useTransitionContext()
+  const { activeTitle, mousePos } = useTransitionContext()
 
   // Fade-in animation state
   const [loaded, setLoaded] = useState(false);
@@ -143,6 +143,16 @@ function Dog({ quality = 'high' }) {
   }, [model, dogMaterial, branchMaterial])
 
   const DogModel = useRef(model)
+  const neckBone = useRef(null)
+
+  // Find neck/head bone for sway
+  useEffect(() => {
+    model.scene.traverse(node => {
+      if (node.isBone && (node.name.toLowerCase().includes('neck') || node.name.toLowerCase().includes('head'))) {
+        neckBone.current = node
+      }
+    })
+  }, [model])
 
   // Transition Effect logic (Decoupled from DOM)
   useEffect(() => {
@@ -195,8 +205,26 @@ function Dog({ quality = 'high' }) {
       }, "four")
   }, [])
 
-  // FPS monitoring (dev mode only)
+  // Procedural Animation Loop
   useFrame((state, delta) => {
+    const time = state.clock.getElapsedTime();
+
+    // 1. Procedural Breathing (Subtle scale oscillation)
+    const breathing = Math.sin(time * 1.5) * 0.005;
+    DogModel.current.scene.scale.setScalar(scale + breathing);
+
+    // 2. Dynamic Head/Neck Sway based on mouse
+    if (neckBone.current) {
+      // Target rotation based on mousePos
+      const targetRotX = mousePos.y * 0.15;
+      const targetRotY = mousePos.x * 0.25;
+
+      // Smoothly lerp to target rotation
+      neckBone.current.rotation.x = THREE.MathUtils.lerp(neckBone.current.rotation.x, targetRotX, 0.05);
+      neckBone.current.rotation.y = THREE.MathUtils.lerp(neckBone.current.rotation.y, targetRotY, 0.05);
+    }
+
+    // FPS monitoring (dev mode only)
     if (import.meta.env.DEV && Math.random() < 0.01) {
       const currentFps = Math.round(1 / delta);
       if (currentFps < 30) {
